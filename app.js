@@ -9,9 +9,10 @@ function exibirTextoTela(tag, texto) {
 exibirTextoTela("h1", "Jogo do número secreto")
 exibirTextoTela("p", "Escolha um número entre 1 e 10" )
 
-//criando uma função sem parâmetros com o js
+//criando uma função sem parâmetros com o js (para verificar se o valor do número que foi escolhido no chute se é igual ao número secreto)
 function verificarChute() {
-    console.log("o botão foi clicado");
+    let chute = document.querySelector("input").value
+    console.log(chute == numeroSecreto); //ele dá um resultado de valor booleano - true ou false
 }
 
 //Função com retorno
