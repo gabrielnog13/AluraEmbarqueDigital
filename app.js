@@ -1,4 +1,6 @@
 let numeroSecreto  = gerarNumeroAleatorio();
+//variável para fazer o contador de tentativas
+let tentativas = 1;
 
 //criando a função com parâmetros
 function exibirTextoTela(tag, texto) {
@@ -6,13 +8,27 @@ function exibirTextoTela(tag, texto) {
     campo.innerHTML = texto;
 }
 //chamando a função no código
-exibirTextoTela("h1", "Jogo do número secreto")
-exibirTextoTela("p", "Escolha um número entre 1 e 10" )
+exibirTextoTela("h1", "Jogo do número secreto");
+exibirTextoTela("p", "Escolha um número entre 1 e 10" );
 
 //criando uma função sem parâmetros com o js (para verificar se o valor do número que foi escolhido no chute se é igual ao número secreto)
 function verificarChute() {
-    let chute = document.querySelector("input").value
-    console.log(chute == numeroSecreto); //ele dá um resultado de valor booleano - true ou false
+    let chute = document.querySelector("input").value;
+
+    if (chute == numeroSecreto) {
+        exibirTextoTela("h1", "Acertou!!");
+        //contador de tentativas
+        let pTentativa = tentativas > 1 ? "tentativas" : "tentativa";
+        let mensagemTentativas = `Você descobriu o número secreto com ${tentativas} ${pTentativa}!`;
+        exibirTextoTela("p", mensagemTentativas);
+    } else {
+        if (chute > numeroSecreto) {
+            exibirTextoTela("p", "O número secreto é menor");
+        } else {
+            exibirTextoTela("p", "O número secreto é maior")
+        }
+        tentativas++; //ou tentativas = tentativas + 1
+    }
 }
 
 //Função com retorno
